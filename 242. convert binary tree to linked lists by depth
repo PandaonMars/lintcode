@@ -1,0 +1,9 @@
+class Solution:
+    def binaryTreeToLists(self, root):
+        ret, q = [], root and [root]
+        while q:
+            head = cur = ListNode(q[0].val)
+            for i in range(1, len(q)): cur.next = cur = ListNode(q[i].val)
+            ret.append(head)
+            q = [child for node in q for child in (node.left, node.right) if child]
+        return ret
