@@ -1,0 +1,46 @@
+"""
+Definition of ListNode
+
+class ListNode(object):
+
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+"""
+
+class Solution:
+    """
+    @param head: n
+    @return: The new head of reversed linked list.
+    """
+        if head is None or head.next is None:
+            return head;
+        
+        // null->1->2->3->4->5->null
+        //  p    c
+        prev = ListNode(None);
+        curr = head;
+        while head: 
+            // null->1->2->3->4->5->null
+            //  p    c  n
+            next = curr.next;
+            
+            // null<-1  2->3->4->5->null
+            //  p    c  n
+            curr.next = prev;
+            
+            // null<-1  2->3->4->5->null
+            //       c  n
+            //       p
+            prev = curr; 
+            
+            // null<-1  2->3->4->5->null
+            //       p  n
+            //          c
+            curr = next;
+
+        // null<-1<-2<-3<-4<-5  null
+        //                   p  n
+        //                      c
+      
+        return prev
